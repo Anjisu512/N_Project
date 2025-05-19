@@ -5,6 +5,8 @@ Node.js 18 설치 혹은 nvm 사용하여 Node.js 18버전사용
 
 Docker Desktop 설치 (설치 마법사 따라 진행)
 
+(MongoDB)
+
 docker-compose.yml 안에 MongoDB 관련 서비스가 정의되어있기에 별도 설치하지 않아도 작동합니다.
 
 <nvm 설치 후 아래 명령어 입력>
