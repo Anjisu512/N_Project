@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>회원가입</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="login-box-center">
+  <div class="login-container">
+    <h1>회원가입</h1>
+    <form id="registerForm">
+      <input autocomplete="off" class="login-Input" type="text" name="username" placeholder="아이디" required />
+      <input autocomplete="off" class="login-Input" type="password" name="password" placeholder="비밀번호" required />
+      <button class="login-button" type="submit">회원가입</button>
+    </form>
+    
+    <div class="register-link">
+      <p>이미 계정이 있으신가요?</p>
+      <form action="/login" method="GET">
+        <button type="submit">로그인</button>
+      </form>
+    </div>
+  </div>
+
+  <img src="/img/backImg.jpg" alt="login deco" class="login-bottom-right-image" />
+  <img src="/img/backImg2.jpg" alt="login deco 2" class="login-top-left-image" />
+
+  <script>
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = new URLSearchParams(formData);
+
+      try {
+        const response = await fetch('/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: payload,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert('회원가입 성공!');
+          window.location.href = '/login';
+        } else {
+          alert(data.message || '회원가입 실패');
+        }
+      } catch (err) {
+        alert('서버 오류가 발생했습니다.');
+      }
+    });
+  </script>
+
+</body>
+
+</html>

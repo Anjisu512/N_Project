@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Main Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/modal.css" /> <!--모달 CSS -->
+</head>
+
+<body class="mainHome-box-center">
+  <!-- 사용자 정보 -->
+  <div class="mainHome-top-right-user">
+    <div class="mainHome-dropdown">
+      <span>👤 <%= user.username %></span>
+      <div class="mainHome-dropdown-content">
+        <a href="/myPage">마이페이지</a>
+        <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+          <a href="/adminPage">관리자 페이지</a>
+        <% } %>
+        <a href="/logout">로그아웃</a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="mainHome-container">
+    <h1>메인 홈 페이지</h1>
+
+    <!-- 메인 버튼 영역 -->
+    <div class="mainHome-button-container">
+      <!-- 보상 등록/조회, 보상 요청처리 는 ADMIN과 OPERATOR -->
+      <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+        <button onclick="openEventModal()">이벤트 등록</button>
+      <form action="/rewardManager" method="get" style="display:inline;">
+        <button type="submit">보상 등록/조회 </button>
+      </form>
+      <form action="/rewardAction" method="get" style="display:inline;">
+        <button type="submit">보상 요청 처리</button>
+      </form>        
+      <% } %>
+
+      <!-- 보상 이력 관리는 ADMIN,OPERATOR,AUDITOR --> 
+      <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR') || user.roles.includes('AUDITOR') ) { %>
+        <form action="/rewardHistory" method="get" style="display:inline;">
+          <button type="submit">보상 이력 관리</button>
+        </form>
+      <% } %>
+      
+      <!-- 이벤트 조회는 로그인한 누구나 -->
+      <button onclick="openEventListModal()">이벤트 조회</button>
+
+      <!-- 이벤트 참여는 ADMIN / OPERATOR / USER -->
+      <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR') || user.roles.includes('USER') ) { %>
+        <form action="/requestReward" method="get" style="display:inline;">
+        <button type="submit">보상 요청(이벤트 참여)</button>
+      </form>
+      <% } %>
+
+
+    </div>
+  </div>
+
+  <!--이벤트 등록 모달 -->
+  <div id="eventModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeEventModal()">&times;</span>
+      <h2>이벤트 등록</h2>
+      <form id="eventForm">
+        <label for="title">제목</label>
+        <input autocomplete="off" type="text" name="title" placeholder="제목" required />
+        <br />
+
+        <label for="description">설명</label>
+        <textarea autocomplete="off" name="description" placeholder="설명"></textarea>
+        <br />
+
+        <label for="condition">조건</label>
+        <select name="condition" id="conditionSelect" required>
+          <option value="" disabled selected>조건을 선택하세요</option>
+          <option value="login_count">로그인 횟수</option>
+          <option value="purchase_count">구매 횟수</option>
+          <option value="invite_count">초대 횟수</option>
+          <option value="custom">직접 입력</option>
+        </select>
+        <!-- 사용자 직접 조건 입력 (초기에는 숨김 처리) -->
+        <input autocomplete="off" type="text" id="customCondition" name="custom_condition"
+          placeholder="조건 이름 입력 (예: 출석 횟수)" style="display: none; margin-top: 5px;" />
+
+        <!-- 조건 값 입력 -->
+        <input autocomplete="off" type="number" name="value" placeholder="값 입력 (예: 3)" required
+          style="margin-top: 5px;" />
+
+        <br />
+        <label for="Date">시작/종료일</label>
+        <input type="date" name="startDate" id="startDate" required />
+        <input type="date" name="endDate" id="endDate" required />
+        <br />
+
+        <label for="status">상태</label>
+        <select name="status" disabled>
+          <option value="inactive" selected>비활성</option>
+          <option value="active">활성</option>
+        </select>
+        <br />
+        <br />
+        <div class="modal-button-group">
+          <button type="submit" class="submit-btn">등록</button>
+          <button type="button" class="cancel-btn" onclick="closeEventModal()">취소</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- 이벤트 조회 모달 -->
+  <div id="eventListModal" class="modal eventList-modal" style="display: none; position: fixed;">
+    <div class="modal-content eventList-content">
+      <span class="close eventList-close" onclick="closeEventListModal()">&times;</span>
+      <h2 class="eventList-title">진행 중인 이벤트</h2>
+
+      <!-- 현재 진행 중인 이벤트만 보기 체크박스는 전체이벤트가 보이는 admin과 operator만 확인가능-->
+      <% if (user.roles==='ADMIN' || user.roles==='OPERATOR' ){ %>
+        <div class="eventList-filter-inline">
+          <label for="filterActiveOnly">
+            <input type="checkbox" id="filterActiveOnly" onchange="applyFiltersAndRender()" />
+            현재 진행 중인 이벤트만 보기
+          </label>
+        </div>
+        <% } %>
+
+          <!-- 보여지는 이벤트 리스트 -->
+          <ul id="eventListContainer" class="eventList-container"></ul>
+
+          <!-- 페이징 처리 영역 -->
+          <div class="eventList-pagination">
+            <button onclick="prevPage()" class="eventList-button">◀ 이전</button>
+            <span id="pageIndicator" style="margin: 0 10px;"></span>
+            <button onclick="nextPage()" class="eventList-button">다음 ▶</button>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+            <button type="button" onclick="closeEventListModal()">닫기</button>
+          </div>
+    </div>
+  </div>
+
+
+
+  <!-- 상세보기 모달 내부 -->
+  <div id="eventDetailModal" class="modal eventDetail-modal" style="display: none;">
+    <div class="modal-content eventDetail-content">
+      <span class="close eventDetail-close" onclick="closeEventDetailModal()">&times;</span>
+      <h3 id="detailTitle" class="eventDetail-title">이벤트 제목</h3>
+
+      <div class="eventDetail-line">
+        <span class="eventDetail-label">설명:</span>
+        <span id="detailDescription" class="eventDetail-value">이벤트 설명</span>
+      </div>
+
+      <div class="eventDetail-line">
+        <span class="eventDetail-label">기간:</span>
+        <span id="detailPeriod" class="eventDetail-value">기간</span>
+      </div>
+
+      <div class="eventDetail-line">
+        <span class="eventDetail-label">보상:</span>
+        <span id="detailReward" class="eventDetail-value">보상</span>
+      </div>
+
+      <div class="eventDetail-line">
+        <span class="eventDetail-label">보상 상태:</span>
+        <span id="rewardStatus" class="eventDetail-value">확인 중...</span>
+      </div>
+      <!-- ADMIN 또는 OPERATOR만 보이는 이벤트 삭제 버튼 -->
+      <% if (user.roles==='ADMIN' || user.roles==='OPERATOR' ) { %>
+        <div style="margin-top: 20px; text-align: right;">
+          <button id="deleteEventBtn"
+            style="background-color: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
+            이벤트 삭제
+          </button>
+        </div>
+        <% } %>
+    </div>
+  </div>
+
+  <!-- 이미지 -->
+  <img src="/img/backImg.jpg" alt="main deco" class="mainHome-bottom-right-image" />
+  <img src="/img/backImg2.jpg" alt="main deco 2" class="mainHome-top-left-image" />
+
+  <!-- 모달 동작 스크립트 분리 -->
+  <script src="/js/modal.js"></script>
+  <script id="rejectedNotice-data" type="application/json">
+    <%- JSON.stringify(rejectedNotice || []) %>
+  </script>
+</body>
+
+</html>

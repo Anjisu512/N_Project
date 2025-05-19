@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/css/adminPage.css" />
+</head>
+
+<body class="adminPage-box-center">
+
+    <!-- 사용자 정보역 -->
+    <div class="adminPage-top-right-user">
+        <div class="adminPage-user-box">
+            <a href="/" class="adminPage-home-button">홈으로</a>
+            <div class="adminPage-user-dropdown">
+                <span>👤 <%= user.username %></span>
+                <div class="adminPage-user-dropdown-content">
+                    <a href="/myPage">마이페이지</a>
+                    <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+                        <a href="/adminPage">관리자 페이지</a>
+                    <% } %>
+                    <a href="/logout">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 유저 관리 모달 -->
+    <div id="userMgrModal" class="adminPage-modal hidden">
+        <div class="adminPage-modal-content">
+            <span class="adminPage-modal-close" id="closeUserMgrModal">&times;</span>
+            <h2 class="adminPage-modal-title">유저 관리</h2>
+
+            <div class="adminPage-table-wrapper"> <!-- 유저가 많을경우 전체가 스크롤이되어서 table만 컨테이너만 스크롤생성-->
+                <table class="adminPage-table">
+                    <thead>
+                        <tr>
+                            <th>유저 ID</th>
+                            <th>유저 이름</th>
+                            <th>가입일</th>
+                            <th>권한(Role)</th>
+                            <!-- <th>정보 수정</th> -->
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <!-- JS로 동적 삽입 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 권한 수정 모달 -->
+    <div id="roleEditModal" class="adminPage-modal hidden">
+        <div class="adminPage-modal-content role-edit-modal">
+            <span class="adminPage-modal-close" id="closeRoleEditModal">&times;</span>
+            <h2 class="adminPage-modal-title">권한 수정</h2>
+
+            <div class="role-checklist">
+                <ul id="roleCheckboxList" class="role-ul checkbox-list"></ul>
+            </div>
+
+            <div class="role-edit-actions">
+                <button id="saveRoleChangeBtn" class="adminPage-button">저장</button>
+                <button id="cancelRoleChangeBtn" class="adminPage-button">취소</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 마이페이지 메인 컨테이너 -->
+    <div class="adminPage-container">
+        <h1 class="adminPage-title">관리자 페이지</h1>
+        <button id="openUserManagerBtn" class="adminPage-button">유저 관리</button>
+    </div>
+
+    <script type="module" src="/js/adminPage.js"></script>
+    <!-- 이미지 -->
+    <img src="/img/backImg.jpg" alt="main deco" class="adminPage-bottom-right-image" />
+    <img src="/img/backImg2.jpg" alt="main deco 2" class="adminPage-top-left-image" />
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+/* ------------------------- [공통 모달 스타일] ------------------------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: 'Arial', sans-serif;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+
+/* ------------------------- [이벤트 생성 모달 - 버튼 그룹] ------------------------- */
+.modal-button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* 등록 버튼 (4/5 비율) */
+.modal-button-group .submit-btn {
+  flex: 4;
+  padding: 10px;
+  background-color: #197144;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.modal-button-group .submit-btn:hover {
+  background-color: #145f39;
+}
+
+/* 취소 버튼 (1/5 비율) */
+.modal-button-group .cancel-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: #f74848;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.modal-button-group .cancel-btn:hover {
+  background-color: #bbb;
+}
+
+
+/* ------------------------- [공통 닫기(X) 버튼] ------------------------- */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+
+/* ------------------------- [닫기 버튼 아래 여백 제거 + 모달 하단 여백 제거] ------------------------- */
+.eventList-modal .eventList-content {
+  padding: 30px 20px 30px 20px; /* ✅ 하단 padding 60px → 30px */
+}
+ 
+/* ------------------------- [이벤트 리스트 모달 - 닫기(X)] ------------------------- */
+.eventList-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+
+/* ------------------------- [이벤트 리스트 모달 - 제목/필터] ------------------------- */
+.eventList-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.eventList-title {
+  font-size: 20px;
+  margin: 0;
+}
+
+
+/* ------------------------- [이벤트 리스트 모달 - 이벤트 항목 span 스타일] ------------------------- */
+.eventList-container {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-item {
+  display: inline-block;
+  padding: 4px 0;
+  color: #333;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.event-item:hover {
+  color: #007bff;
+}
+
+
+/* ------------------------- [이벤트 리스트 모달 - 필터 체크박스] ------------------------- */
+
+.eventList-filter-inline {
+  display: flex;
+  justify-content: flex-end; /* ✅ 오른쪽 끝 정렬 */
+  margin-bottom: 10px;
+}
+
+.eventList-filter-inline label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+.eventList-filter-inline input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+/* ------------------------- [이벤트 리스트 모달 - 페이징 영역] ------------------------- */
+.eventList-pagination {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.eventList-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.eventList-button:hover {
+  background-color: #45a049;
+}
+
+.eventList-button:disabled {
+  background-color: #ccc;
+  cursor: default;
+  color: #888;
+}
+
+
+/* ------------------------- [이벤트 리스트 모달 - 닫기 버튼 (하단 우측)] ------------------------- */
+.eventList-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.eventList-footer button {
+  padding: 8px 16px;
+  background-color: #aaa;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.eventList-footer button:hover {
+  background-color: #888;
+}
+
+
+/* ------------------------- [이벤트 상세보기 모달] ------------------------- */
+.eventDetail-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.eventDetail-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.eventDetail-label {
+  font-weight: 600;
+  color: #333;
+  min-width: 90px;
+}
+
+.eventDetail-value {
+  color: #555;
+}
+
+
+/* ------------------------- [보상 상태 스타일] ------------------------- */
+.eventDetail-status.success {
+  color: #28a745; /* 지급됨 */
+}
+
+.eventDetail-status.pending {
+  color: #ff9800; /* 요청됨 */
+}
+
+.eventDetail-status.none {
+  color: #d32f2f; /* 미지급 */
+}
+
+.eventDetail-status.error {
+  color: #999;    /* 오류 */
+}

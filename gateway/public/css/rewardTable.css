@@ -1,0 +1,276 @@
+/* -------------------- 기본 레이아웃 -------------------- */
+.reward-body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+}
+
+.reward-home-button {
+  padding: 5px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.reward-home-button:hover {
+  background-color: #45a049;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-btn {
+  margin: 0 3px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold; 
+}
+
+/* -------------------- 유저 영역 -------------------- */
+.reward-top-user {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.reward-user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 25px;
+}
+
+.reward-user-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+
+.reward-user-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.reward-user-dropdown-content a {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.reward-user-dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* 드롭다운 hover 시 드롭다운 메뉴 표시 */
+.reward-user-dropdown:hover .reward-user-dropdown-content {
+  display: block;
+}
+ 
+/* -------------------- 메인 컨테이너 -------------------- */
+.reward-container {
+  max-width: 1100px;
+  margin: 80px auto 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.reward-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.reward-subtitle {
+  font-size: 22px;
+  margin: 30px 0 20px 0;
+  text-align: center;
+}
+
+/* -------------------- 테이블 스타일 -------------------- */
+.reward-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.reward-table th,
+.reward-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.reward-table th {
+  background-color: #f2f2f2;
+}
+
+/* -------------------- 상태 색상 -------------------- */
+.status.success {
+  color: green;
+  font-weight: bold;
+}
+
+.status.pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status.none {
+  color: red;
+  font-weight: bold;
+}
+
+.status.disabled {
+  color: gray;
+  font-style: italic;
+}
+
+.status.rejected {
+  color: rgba(255, 0, 64, 0.548);
+  font-weight: bold;
+}
+
+/* -------------------- 요청 버튼 -------------------- */
+.request-btn {
+  margin-left: 8px;
+  padding: 4px 8px;
+  font-size: 13px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.request-btn:hover {
+  background-color: #45a049;
+}
+
+/* -------------------- 모달 -------------------- */
+.reward-modal {
+  display: flex;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.reward-modal.hidden {
+  display: none !important;
+}
+
+.reward-modal-content {
+  position: relative;
+  background: white;
+  padding: 20px 25px;
+  border-radius: 12px;
+  width: 460px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.reward-modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.reward-modal-body p {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.reward-modal-body strong {
+  display: inline-block;
+  width: 110px;
+  color: #333;
+}
+
+.reward-modal-actions {
+  margin-top: 25px;
+  text-align: right;
+}
+#participationEventBtn{
+  padding: 8px 14px;
+  background-color: #ec896b;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#participationEventBtn:hover {
+  background-color: #45a049;
+}
+
+#confirmRequestBtn {
+  padding: 8px 14px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#confirmRequestBtn:hover {
+  background-color: #45a049;
+}
+
+#confirmRequestBtn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.reward-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* -------------------- 배경 이미지 -------------------- */
+.reward-bottom-right-image {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  width: 300px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.reward-top-left-image {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  z-index: 10;
+}

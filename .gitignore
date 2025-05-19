@@ -1,0 +1,19 @@
+#(각 서비스별 ignore)
+# node_modules 
+auth/node_modules
+event/node_modules
+gateway/node_modules
+
+# build 결과물
+auth/dist
+event/dist
+gateway/dist
+
+# 환경 변수 파일
+auth/.env
+event/.env
+gateway/.env
+
+# MongoDB 데이터 (로컬 저장 시에만 아래추가)
+n_project/
+ 

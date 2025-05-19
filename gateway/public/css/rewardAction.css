@@ -1,0 +1,239 @@
+/* -------------------- 기본 레이아웃 -------------------- */
+.rewardAct-body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+}
+
+/* -------------------- 유저 영역 -------------------- */
+.rewardAct-top-user {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.rewardAct-user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 25px;
+}
+
+.rewardAct-user-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.rewardAct-user-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.rewardAct-user-dropdown-content a {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.rewardAct-user-dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.rewardAct-user-dropdown:hover .rewardAct-user-dropdown-content {
+  display: block;
+}
+
+/* -------------------- 홈 버튼 -------------------- */
+.rewardAct-home-button {
+  padding: 5px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.rewardAct-home-button:hover {
+  background-color: #45a049;
+}
+
+/* -------------------- 메인 컨테이너 -------------------- */
+.rewardAct-container {
+  max-width: 1100px;
+  margin: 80px auto 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.rewardAct-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rewardAct-subtitle {
+  font-size: 22px;
+  margin: 30px 0 20px 0;
+  text-align: center;
+}
+
+/* -------------------- 테이블 -------------------- */
+.rewardAct-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.rewardAct-table th,
+.rewardAct-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.rewardAct-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* -------------------- 페이지네이션 -------------------- */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-btn {
+  margin: 0 3px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+/* -------------------- 배경 이미지 -------------------- */
+.rewardAct-bottom-right-image {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  width: 300px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.rewardAct-top-left-image {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+/* -------------------- 보상 요청 확인 Modal ------------------- */
+.rewardAct-modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.rewardAct-modal.hidden {
+  display: none !important;
+}
+
+.rewardAct-request-list {
+  max-height: 60vh;
+  /* 또는 px 단위도 OK */
+  overflow-y: auto;
+  padding-right: 8px;
+  /* 스크롤바 여백 확보 */
+}
+
+/* Modal 크기 관련 */
+.rewardAct-modal-content {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  width: 700px;
+  /* 폭 확장 */
+  max-height: 80vh;
+  overflow-y: auto;
+  /*  스크롤 */
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.rewardAct-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 보상 요청 항목 한 줄로 변경*/
+.rewardAct-request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* 왼쪽 정보 */
+.rewardAct-request-info {
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* 오른쪽 버튼 영역 */
+.rewardAct-request-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 20px;
+}
+
+/* 버튼 공통 */
+.rewardAct-action-btn {
+  padding: 6px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* 승인 버튼 */
+.rewardAct-approve-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* 거부 버튼 */
+.rewardAct-reject-btn {
+  background-color: #f44336;
+  color: white;
+}

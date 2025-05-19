@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reward History Manager</title>
+  <link rel="stylesheet" href="/css/rewardHistory.css" />
+</head>
+
+<body class="rewardHistory-body">
+
+  <!-- 사용자 정보 및 버튼 영역 -->
+  <div class="rewardHistory-top-user">
+    <div class="rewardHistory-user-box">
+      <a href="/" class="rewardHistory-home-button">홈으로</a>
+      <div class="rewardHistory-user-dropdown">
+        <span>👤 <%= user.username %></span>
+        <div class="rewardHistory-user-dropdown-content">
+          <a href="/myPage">마이페이지</a>
+          <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+            <a href="/adminPage">관리자 페이지</a>
+          <% } %>
+          <a href="/logout">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 보상 이력 관리 컨테이너 -->
+  <div class="rewardHistory-container">
+    <h1 class="rewardHistory-title">보상 이력 관리 페이지</h1>
+    <h2 class="rewardHistory-subtitle">이벤트 목록</h2>
+
+    <!--유저명 검색 필터Search -->
+    <div class="rewardHistory-search">
+      <label for="usernameSearch">유저명 검색: </label>
+      <input type="text" id="usernameSearch" placeholder="유저명을 입력하세요" />
+    </div>
+
+    <table class="rewardHistory-table">
+      <thead>
+        <tr>
+          <th>유저명</th>
+          <th>이벤트명</th>
+          <th>보상</th>
+          <th>보상 요청일</th>
+          <th>보상 지급일</th>
+        </tr>
+      </thead>
+      <tbody id="eventTableBody">
+        <!-- onmount시 js로 event server통신 -->
+      </tbody>
+    </table>
+
+    <!-- 페이징 처리 -->
+    <div class="pagination" id="paginationContainer"></div>
+  </div>
+
+  <!-- 이미지 -->
+  <img src="/img/backImg.jpg" alt="login deco" class="rewardHistory-bottom-right-image" />
+  <img src="/img/backImg2.jpg" alt="login deco 2" class="rewardHistory-top-left-image" />
+
+  <script type="module" src="/js/rewardHistory.js"></script>
+</body>
+
+</html>

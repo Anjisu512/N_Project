@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reward</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/rewardTable.css" />
+</head>
+
+<body class="reward-body">
+
+
+  <!-- 사용자 정보 및 버튼 영역 -->
+  <div class="reward-top-user">
+    <!-- 유저 드롭다운 + 홈버튼 감싸는 박스 -->
+    <div class="reward-user-box">
+      <a href="/" class="reward-home-button">홈으로</a>
+      <div class="reward-user-dropdown">
+        <span>👤 <%= user.username %></span>
+        <div class="reward-user-dropdown-content">
+          <a href="/myPage">마이페이지</a>
+          <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+            <a href="/adminPage">관리자 페이지</a>
+          <% } %>
+          <a href="/logout">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- 보상 요청 컨테이너 -->
+  <div class="reward-container">
+    <h1 class="reward-title">보상요청 페이지</h1>
+    <h2 class="reward-subtitle">이벤트 목록</h2>
+
+    <table class="reward-table">
+      <thead>
+        <tr>
+          <th>이벤트명</th>
+          <th>설명</th>
+          <th>기간</th>
+          <th>보상</th>
+          <th>보상상태</th>
+        </tr>
+      </thead>
+      <tbody id="eventTableBody">
+        <!-- 자바스크립트로 동적 이벤트 데이터 삽입으로 변경 -->
+      </tbody>
+    </table>
+
+    <!-- 페이징처리 -->
+    <div class="pagination" id="paginationContainer"></div>
+  </div>
+
+  <!-- 달성 확인 및 요청 모달 -->
+  <div id="rewardModal" class="reward-modal hidden">
+    <div class="reward-modal-content">
+      <span class="reward-close-btn">&times;</span>
+
+      <!-- 이벤트 제목 -->
+      <h2 id="modal-title" class="reward-modal-title">이벤트명</h2>
+
+      <!-- 이벤트 정보 -->
+      <div class="reward-modal-body">
+        <p><strong>이벤트 설명:</strong> <span id="modal-description">-</span></p>
+        <p><strong>이벤트 기간:</strong> <span id="modal-dates">-</span></p>
+        <p><strong>조건:</strong> <span id="modal-condition">-</span></p>
+        <p><strong>보상:</strong> <span id="modal-reward">-</span></p>
+        <p><strong>현재 달성치:</strong> <span id="modal-progress">불러오는 중...</span></p>
+      </div>
+
+      <!-- 요청버튼 -->
+      <div class="reward-modal-actions">
+        <button id="participationEventBtn" data-event-id="" >이벤트 참여하기</button>
+        <button id="confirmRequestBtn">보상 요청하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 우측 하단 이미지 -->
+  <img src="/img/backImg.jpg" alt="login deco" class="reward-bottom-right-image" />
+  <!-- 좌측 상단 이미지 -->
+  <img src="/img/backImg2.jpg" alt="login deco 2" class="reward-top-left-image" />
+
+  <!-- 모달 및 스크립트 분리 -->
+  <script src="/js/rewardModal.js"></script>
+  <script src="/js/reward.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reward Manager</title>
+  <link rel="stylesheet" href="/css/rewardManager.css" />
+</head>
+
+<body class="rewardMgr-body">
+
+  <!-- 사용자 정보 및 버튼 영역 -->
+  <div class="rewardMgr-top-user">
+    <div class="rewardMgr-user-box">
+      <a href="/" class="rewardMgr-home-button">홈으로</a>
+      <div class="rewardMgr-user-dropdown">
+        <span>👤 <%= user.username %></span>
+        <div class="rewardMgr-user-dropdown-content">
+          <a href="/myPage">마이페이지</a>
+          <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+            <a href="/adminPage">관리자 페이지</a>
+          <% } %>
+          <a href="/logout">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 보상 등록 / 조회 컨테이너 -->
+  <div class="rewardMgr-container">
+    <h1 class="rewardMgr-title">보상 등록 / 조회 페이지</h1>
+    <h2 class="rewardMgr-subtitle">이벤트 목록</h2>
+
+    <table class="rewardMgr-table">
+      <thead>
+        <tr>
+          <th>이벤트명</th>
+          <th>설명</th>
+          <th>기간</th>
+          <th>보상(수량)</th>
+          <th>보상 관리(이벤트 활성화)</th>
+        </tr>
+      </thead>
+      <tbody id="eventTableBody">
+        <!-- onmount시 js로 event server통신  -->
+      </tbody>
+    </table>
+    <div class="pagination" id="paginationContainer"></div>
+
+
+    <div class="pagination" id="paginationContainer"></div>
+  </div>
+
+  <!-- 보상 등록 Modal -->
+  <div class="rewardMgr-modal hidden" id="rewardEditModal">
+    <div class="rewardMgr-modal-content">
+      <span class="rewardMgr-close-btn" id="closeRewardModal">&times;</span>
+      <h3>보상 등록 / 수정</h3>
+
+      <form id="rewardForm">
+        <div>
+          <label>보상:</label>
+          <input type="text" class="reward-input" id="rewardTypeInput" placeholder="예: 캐시, 포인트" />
+        </div>
+        <div style="margin-top: 10px;">
+          <label>수량:</label>
+          <input type="number" class="reward-input" id="rewardAmountInput" placeholder="예: 100" />
+        </div>
+        <div style="text-align: end; margin-top: 10px;">
+          <button type="button" id="addRewardBtn">보상 추가</button>
+        </div>
+
+        <!-- 보상 목록이 여기에 렌더링됨 -->
+        <br />
+        <label for="rewardList">보상 목록</label>
+        <ul id="rewardList" style="margin-top: 10px; padding-left: 20px;"></ul>
+
+        <div style="margin-top: 15px;">
+          <label>이벤트 상태:</label><br />
+          <label>
+            <input type="radio" name="eventStatus" value="active" id="statusActive" /> 활성화
+          </label>
+          <label style="margin-left: 15px;">
+            <input type="radio" name="eventStatus" value="inactive" id="statusInactive" /> 비활성화
+          </label>
+        </div>
+
+        <input type="hidden" id="modalEventId" />
+        <div style="margin-top: 20px; text-align: right;">
+          <button type="submit" class="rewardMgr-manage-btn">저장</button>
+          <button type="button" class="rewardMgr-manage-btn" id="cancelBtn">취소</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+
+
+  <!-- 이미지 -->
+  <img src="/img/backImg.jpg" alt="login deco" class="rewardMgr-bottom-right-image" />
+  <img src="/img/backImg2.jpg" alt="login deco 2" class="rewardMgr-top-left-image" />
+
+  <script src="/js/rewardManager.js"></script>
+</body>
+
+</html>

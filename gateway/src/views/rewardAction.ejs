@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reward Action</title>
+  <link rel="stylesheet" href="/css/rewardAction.css" />
+</head>
+
+<body class="rewardAct-body">
+
+  <!-- 사용자 정보 및 버튼 영역 -->
+  <div class="rewardAct-top-user">
+    <div class="rewardAct-user-box">
+      <a href="/" class="rewardAct-home-button">홈으로</a>
+      <div class="rewardAct-user-dropdown">
+        <span>👤 <%= user.username %></span>
+        <div class="rewardAct-user-dropdown-content">
+          <a href="/myPage">마이페이지</a>
+          <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+            <a href="/adminPage">관리자 페이지</a>
+          <% } %>
+          <a href="/logout">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 보상 요청 처리 컨테이너 -->
+  <div class="rewardAct-container">
+    <h1 class="rewardAct-title">보상 요청 처리 페이지</h1>
+    <h2 class="rewardAct-subtitle">이벤트 목록</h2>
+
+    <table class="rewardAct-table">
+      <thead>
+        <tr>
+          <th>이벤트명</th>
+          <th>설명</th>
+          <th>기간</th>
+          <th>보상(수량)</th>
+          <th>보상 관리(이벤트 활성화)</th>
+          <th>보상 요청 확인</th>
+        </tr>
+      </thead>
+      <tbody id="eventTableBody">
+        <!-- onmount시 js로 event server통신  -->
+      </tbody>
+    </table>
+    
+    <!-- 페이징처리-->
+    <div class="pagination" id="paginationContainer" ></div>
+  </div> 
+    <!-- 보상 요청 확인 모달 -->
+    <div class="rewardAct-modal hidden" id="requestCheckModal">
+      <div class="rewardAct-modal-content wide-scrollable">
+        <span class="rewardAct-close-btn" id="closeRequestModal">&times;</span>
+        <h3>보상 요청 내역</h3>
+        <div id="requestDetailsBox" class="rewardAct-request-list"></div>
+      </div>
+    </div>
+
+  
+
+  <!-- 이미지 -->
+  <img src="/img/backImg.jpg" alt="login deco" class="rewardAct-bottom-right-image" />
+  <img src="/img/backImg2.jpg" alt="login deco 2" class="rewardAct-top-left-image" />
+
+  <script src="/js/rewardAction.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+/* -------------------- 기본 레이아웃 -------------------- */
+.rewardMgr-body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+}
+
+/* -------------------- 유저 영역 -------------------- */
+.rewardMgr-top-user {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.rewardMgr-user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 25px;
+}
+
+.rewardMgr-user-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+
+.rewardMgr-user-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.rewardMgr-user-dropdown-content a {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.rewardMgr-user-dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* 드롭다운 hover 시 드롭다운 메뉴 표시 */
+.reward-user-dropdown:hover .rewardMgr-user-dropdown-content {
+  display: block;
+}
+ 
+.rewardMgr-user-dropdown:hover .rewardMgr-user-dropdown-content {
+  display: block;
+}
+
+/* -------------------- 홈 버튼 -------------------- */
+.rewardMgr-home-button {
+  padding: 5px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.rewardMgr-home-button:hover {
+  background-color: #45a049;
+}
+
+/* -------------------- 메인 컨테이너 -------------------- */
+.rewardMgr-container {
+  max-width: 1100px;
+  margin: 80px auto 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.rewardMgr-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.rewardMgr-subtitle {
+  font-size: 22px;
+  margin: 30px 0 20px 0;
+  text-align: center;
+}
+
+/* -------------------- 테이블 -------------------- */
+.rewardMgr-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.rewardMgr-table th,
+.rewardMgr-table td {
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+.rewardMgr-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* -------------------- 페이지네이션 -------------------- */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-btn {
+  margin: 0 3px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+/* -------------------- 배경 이미지 -------------------- */
+.rewardMgr-bottom-right-image {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  width: 300px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.rewardMgr-top-left-image {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  height: auto;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+/* -------------------- 보상 등록 버튼 -------------------- */
+.reward-edit-btn {
+  padding: 8px 14px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reward-edit-btn:hover {
+  background-color: #45a049;
+}
+
+/* -------------------- 보상 등록 Modal -------------------- */
+.rewardMgr-modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.rewardMgr-modal.hidden {
+  display: none !important;
+}
+
+.rewardMgr-modal-content {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.rewardMgr-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 보상 / 수량 input width */
+.reward-input {
+  width: 345px;
+  padding: 6px;
+  font-size: 14px;
+}

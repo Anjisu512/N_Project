@@ -1,0 +1,178 @@
+/* -------------------------  로그인 페이지 영역  ------------------------- */
+
+/* 로그인 박스를 화면 가운데 정렬 */
+.login-box-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* 로그인 폼 컨테이너 박스 */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* 반투명 배경 */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    backdrop-filter: blur(4px); /* 배경 흐림 효과 */
+}
+
+/* 입력창 스타일 */
+.login-Input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+/* 로그인 버튼 */
+.login-button {
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* 회원가입 링크 영역 */
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link form {
+    margin-top: 10px;
+}
+
+/* 좌하단/우상단 장식 이미지 */
+.login-bottom-right-image {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 300px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.login-top-left-image {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+    height: auto;
+    opacity: 0.9;
+    z-index: 10;
+}
+
+/* -------------------------  메인 페이지 영역  ------------------------- */
+
+/* 메인 페이지 전체 레이아웃 */
+.mainHome-box-center {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* 타이틀 + 버튼을 세로로 중앙 정렬 */
+.mainHome-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    gap: 30px; /* 타이틀과 버튼 사이 간격 */
+}
+
+/* 우측 상단 사용자 드롭다운 영역 */
+.mainHome-top-right-user {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    font-size: 16px;
+    margin-right: 25px;
+}
+
+/* 사용자 드롭다운 구조 */
+.mainHome-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.mainHome-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.mainHome-dropdown-content a {
+    color: black;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.mainHome-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* 드롭다운 hover 시 드롭다운 메뉴 표시 */
+.mainHome-dropdown:hover .mainHome-dropdown-content {
+    display: block;
+}
+
+/* 메인 버튼 컨테이너 */
+.mainHome-button-container {
+    display: flex;
+    gap: 20px;
+}
+
+/* 메인 기능 버튼 스타일 */
+.mainHome-button-container button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.mainHome-button-container button:hover {
+    background-color: #45a049;
+}
+
+/* 좌하단/우상단 장식 이미지 */
+.mainHome-bottom-right-image {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 300px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.mainHome-top-left-image {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+    height: auto;
+    opacity: 0.9;
+    z-index: 10;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link rel="stylesheet" href="/css/myPage.css" />
+</head>
+
+<body class="myPage-box-center">
+
+    <!-- 사용자 정보역 -->
+    <div class="myPage-top-right-user">
+        <div class="myPage-user-box">
+            <a href="/" class="myPage-home-button">홈으로</a>
+            <div class="myPage-user-dropdown">
+                <span>👤 <%= user.username %></span>
+                <div class="myPage-user-dropdown-content">
+                    <a href="/myPage">마이페이지</a>
+                    <% if (user.roles.includes('ADMIN') || user.roles.includes('OPERATOR')) { %>
+                        <a href="/adminPage">관리자 페이지</a>
+                    <% } %>
+                    <a href="/logout">로그아웃</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 마이페이지 메인 컨테이너 -->
+    <div class="myPage-container">
+        <h1 class="myPage-title">마이 페이지</h1>
+        <h2 class="myPage-subtitle">내 정보 및 활동 요약</h2>
+
+        <!-- 유저 정보 요약, 데이터는 JS파일에서 RESTFul로 호출 예정 controller에서 기본적인 정보만 
+            ejs템플릿으로 전달중 user => user.username, user.userId-->
+        <div class="myPage-user-info-card" id="userInfoCard">
+            <p><strong>유저명:</strong> <span id="username">
+                    <%= user.username %>
+                </span></p>
+            <p><strong>가입일:</strong> <span id="createdAt">-</span></p>
+        </div>
+
+
+        <!-- 버튼 컨테이너 -->
+        <div class="myPage-link-buttons">
+            <button id="openRewardBtn" class="myPage-button">이벤트 보상 이력 확인</button>
+            <!-- <a href="/myPage/edit" class="myPage-button">내 정보 수정</a> -->
+        </div>
+    </div>
+
+    <!-- 보상 이력 확인 모달 -->
+    <div id="rewardModal" class="myPage-modal hidden">
+        <div class="myPage-modal-content">
+            <span id="closeModalBtn" class="myPage-modal-close">&times;</span>
+            <h2>보상 이력</h2>
+            <div id="rewardHistoryList">
+                <!-- JS로 삽입 -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 사용자 ID JSON형태로 myPage.js로 전달 -->
+    <script id="userInfo-data" type="application/json">
+        <%- JSON.stringify({ userId: user.userId }) %>
+    </script>
+    <script type="module" src="/js/myPage.js"></script>
+    <!-- 이미지 -->
+    <img src="/img/backImg.jpg" alt="main deco" class="myPage-bottom-right-image" />
+    <img src="/img/backImg2.jpg" alt="main deco 2" class="myPage-top-left-image" />
+</body>
+
+</html>

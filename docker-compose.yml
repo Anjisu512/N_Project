@@ -1,0 +1,40 @@
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./n_project/mongo-data:/data/db  # 로컬 경로로 db를 바인드 (데이터 직접확인을 위해)
+
+  auth:
+    build: ./auth
+    ports:
+      - "3001:3000"
+    env_file:
+      - ./auth/.env
+    depends_on:
+      - mongo
+
+  event:
+    build: ./event
+    ports:
+      - "3002:3000"
+    env_file:
+      - ./event/.env
+    depends_on:
+      - mongo
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./gateway/.env
+    depends_on:
+      - auth
+      - event
+ 
+# 볼륨 정의 제거: 바인드 마운트를 사용하므로 필요 없음
+#volumes:
+#  n_project:
